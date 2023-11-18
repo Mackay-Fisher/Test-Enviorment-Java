@@ -50,5 +50,11 @@ public class RationalTest
         assertThat("the numerator should be 2", value2.numerator(), is(2));
         // And the value should have denominator `1`
         assertThat("the denominator should be 1", value2.denominator(), is(1));
+
+        Rational value3 = new Rational(2, 3);
+        // Then the value should have numerator `2`
+        assertThat("the numerator should be 2", value3.numerator(), is(2));
+        // And the value should have denominator `3`
+        assertThat("the denominator should be 3", value3.denominator(), is(3));
     }
 }
