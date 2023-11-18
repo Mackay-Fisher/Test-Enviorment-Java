@@ -10,4 +10,12 @@ public class Rational
     {
         System.out.println( "Hello World!" );
     }
+
+    public int numerator() {
+        return 0;
+     }
+     
+     public int denominator() {
+        return 1;
+     }
 }
