@@ -10,12 +10,23 @@ public class Rational
     {
         System.out.println( "Hello World!" );
     }
+    private int numerator;
+    private int denominator;
+    Rational(int a){
+        this.numerator = a;
+        this.denominator = 1;
+    }
+
+    Rational(){
+        this.numerator = 0;
+        this.denominator = 1;
+    }
 
     public int numerator() {
-        return 0;
+        return this.numerator;
      }
      
      public int denominator() {
-        return 1;
+        return this.denominator;
      }
 }

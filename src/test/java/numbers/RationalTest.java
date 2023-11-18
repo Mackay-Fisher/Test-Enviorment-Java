@@ -29,6 +29,8 @@ public class RationalTest
         return new TestSuite( RationalTest.class );
     }
 
+
+
     /**
      * Rigourous Test :-)
      */
@@ -42,5 +44,11 @@ public class RationalTest
         assertThat("the numerator should be 0", value.numerator(), is(0));
         // And the value should have denominator 1
         assertThat("the denominator should be 1", value.denominator(), is(1));
+
+        Rational value2 = new Rational(2);
+        // Then the value should have numerator `2`
+        assertThat("the numerator should be 2", value2.numerator(), is(2));
+        // And the value should have denominator `1`
+        assertThat("the denominator should be 1", value2.denominator(), is(1));
     }
 }
