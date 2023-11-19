@@ -199,7 +199,27 @@ public class RationalTest
         String str = g1.toString();
         assertThat("2/3 is not minus one", str, is("2/3"));
 
+        Rational h1 = new Rational(-1, 1);
+        String str1 = h1.toString();
+        assertThat("-1/1 is minus one", str1, is("-1"));
 
+        Rational i1 = new Rational(2, 3);
+        boolean isMinusOne2 = i1.isMinusOne();
+        assertThat("2/3 is not minus one", isMinusOne2, is(false));
+
+        Rational j1 = new Rational(-1, 1);
+        boolean isMinusOne3 = j1.isMinusOne();
+        assertThat("-1/1 is minus one", isMinusOne3, is(true));
+
+        Rational k1 = new Rational(1, -1);
+        boolean isMinusOne4 = k1.isMinusOne();
+        assertThat("1/-1 is minus one", isMinusOne4, is(true));
+
+        Rational l1 = new Rational(-1, -1);
+        boolean isMinusOne5 = l1.isMinusOne();
+        assertThat("-1/-1 is minus one", isMinusOne5, is(false));
+
+        
 
 
 

@@ -35,7 +35,7 @@ public class Rational
                     gcd = i;
                 }
             }
-            if(a_negative || b_negative){
+            if((a_negative || b_negative) && !(a_negative && b_negative)){
                 a = -a;
             }
             a = a / gcd;
@@ -155,11 +155,12 @@ public class Rational
     public boolean isMinusOne(){
         boolean a_negative = this.numerator < 0;
         boolean b_negative = this.denominator < 0;
+        System.out.println(a_negative + " " + b_negative);
+        if(a_negative && b_negative){
+            return false;
+        }
         if(a_negative){
             this.numerator = -this.numerator;
-        }
-        if(b_negative){
-            this.denominator = -this.denominator;
         }
         if(this.numerator == this.denominator && (a_negative || b_negative)){
             return true;
