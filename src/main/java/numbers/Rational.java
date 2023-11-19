@@ -49,6 +49,22 @@ public class Rational
         this(r.numerator, r.denominator);
     }
 
+    public Rational(int a) {
+        this(a, 1);
+    }
+
+    public Rational() {
+        this(0, 1);
+    }
+
+    public int numerator() {
+        return this.numerator;
+    }
+     
+    public int denominator() {
+        return this.denominator;
+    }
+
     public Rational opposite(){
         return new Rational(-this.numerator, this.denominator);
     }
@@ -77,19 +93,73 @@ public class Rational
         return this.plus(r.opposite());
     }
 
-    public Rational(int a) {
-        this(a, 1);
+    public Rational raisedToThePowerOf(int n){
+
+        for(int i = 0; i < n; i++){
+            this.numerator = this.numerator * this.numerator;
+            this.denominator = this.denominator * this.denominator;
+        }
+        return new Rational(this.numerator, this.denominator);
     }
 
-    public Rational() {
-        this(0, 1);
+    public boolean equals(Object o){
+        if(o instanceof Rational){
+            Rational r = (Rational) o;
+            return this.numerator == r.numerator && this.denominator == r.denominator;
+        } else {
+            return false;
+        }
     }
 
-    public int numerator() {
-        return this.numerator;
-     }
-     
-     public int denominator() {
-        return this.denominator;
-     }
+    public boolean greaterThan(Rational r){
+        return this.numerator * r.denominator > r.numerator * this.denominator;
+    }
+
+    public boolean lessThan(Rational r){
+        return this.numerator * r.denominator < r.numerator * this.denominator;
+    }
+
+    public boolean greaterThan(Number n){
+        Number a = this.numerator / this.denominator;
+        return a.doubleValue() > n.doubleValue();
+    }
+
+    public boolean lessThan(Number n){
+        Number a = this.numerator / this.denominator;
+        return a.doubleValue() < n.doubleValue();
+    }
+
+    public boolean isZero(){
+        return this.numerator == 0;
+    }
+
+    public boolean isOne(){
+        return this.numerator == this.denominator;
+    }
+
+    public boolean isMinusOne(){
+        boolean a_negative = this.numerator < 0;
+        boolean b_negative = this.denominator < 0;
+        if(a_negative){
+            this.numerator = -this.numerator;
+        }
+        if(b_negative){
+            this.denominator = -this.denominator;
+        }
+        if(this.numerator == this.denominator && (a_negative || b_negative)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String toString(){
+        if(this.denominator == 1){
+            return "" + this.numerator;
+        }else{
+            return this.numerator + "/" + this.denominator;
+        }
+    }
+
+
 }
