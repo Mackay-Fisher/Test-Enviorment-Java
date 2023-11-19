@@ -85,6 +85,122 @@ public class RationalTest
         assertThat("2 * 5 = 10", result.numerator(), is(10));
         assertThat("3 * 7 = 21", result.denominator(), is(21));
 
+        Rational a = new Rational(2, 3);
+        Rational b = new Rational(5, 7);
+        Rational divide = a.dividedBy(b);
+        assertThat("2 * 7 = 14", divide.numerator(), is(14));
+        assertThat("3 * 5 = 15", divide.denominator(), is(15));
+
+        Rational x = new Rational(2, 3);
+        Rational y = new Rational(0, 4);
+        assertThrows(IllegalArgumentException.class, ()->x.dividedBy(y));
+
+        Rational c = new Rational(2, 3);
+        Rational d = new Rational(5, 7);
+        Rational plus = c.plus(d);
+        assertThat("2 * 7 + 5 * 3 = 29", plus.numerator(), is(29));
+        assertThat("3 * 7 = 21", plus.denominator(), is(21));
+
+        Rational e = new Rational(2, 3);
+        Rational f = new Rational(5, 7);
+        Rational minus = e.minus(f);
+        assertThat("2 * 7 - 5 * 3 = -1", minus.numerator(), is(-1));
+        assertThat("3 * 7 = 21", minus.denominator(), is(21));
+
+
+        Rational g = new Rational(2, 3);
+        Rational h = g.raisedToThePowerOf(4);
+        assertThat("2^4 = 16", h.numerator(), is(16));
+        assertThat("3^4 = 81", h.denominator(), is(81));
+
+        Rational i = new Rational(2, 3);
+        Rational j = i.raisedToThePowerOf(0);
+        assertThat("2^0 = 1", j.numerator(), is(1));
+        assertThat("3^0 = 1", j.denominator(), is(1));
+
+        Rational k = new Rational(2, 3);
+        Rational l = k.raisedToThePowerOf(-2);
+        assertThat("3^2 = 9", l.numerator(), is(9));
+        assertThat("2^2 = 4", l.denominator(), is(4)); 
+        
+        Rational m = new Rational(2, 3);
+        Rational n = new Rational(1,2);
+        boolean equal = m.equals(n);
+        assertThat("2/3 != 1/2", equal, is(false));
+
+        Rational o = new Rational(2, 3);
+        Rational p1 = new Rational(2, 3);
+        boolean equal1 = o.equals(p1);
+        assertThat("2/3 == 2/3", equal1, is(true));
+
+        Rational q1 = new Rational(2, 3);
+        Rational r = new Rational(2, 3);
+        boolean greaterThan = q1.greaterThan(r);
+        assertThat("2/3 > 2/3", greaterThan, is(false));
+
+        Rational s = new Rational(2, 3);
+        Rational t = new Rational(1, 2);
+        boolean greaterThan1 = s.greaterThan(t);
+        assertThat("2/3 > 1/2", greaterThan1, is(true));
+
+
+        Rational u = new Rational(2, 3);
+        boolean greaterThan2 = u.greaterThan(.6);
+        assertThat("2/3 > 0.6", greaterThan2, is(true));
+
+        Rational v = new Rational(2, 3);
+        boolean greaterThan3 = v.greaterThan(.7);
+        assertThat("2/3 > 0.7", greaterThan3, is(false));
+
+        Rational u1 = new Rational(2, 3);
+        Rational v1 = new Rational(1, 2);
+        boolean lessThan = u1.lessThan(v1);
+        assertThat("2/3 < 1/2", lessThan, is(false));
+
+        Rational w = new Rational(1, 2);
+        Rational x1 = new Rational(2, 3);
+        boolean lessThan1 = w.lessThan(x1);
+        assertThat("2/3 < 1/2", lessThan1, is(true));
+
+        Rational y1 = new Rational(2, 3);
+        boolean leeThan2 = y1.lessThan(.6);
+        assertThat("2/3 < 0.6", leeThan2, is(false));
+
+        Rational z = new Rational(2, 3);
+        boolean leeThan3 = z.lessThan(.7);
+        assertThat("2/3 < 0.7", leeThan3, is(true));
+
+        Rational a1 = new Rational(2, 3);
+        boolean isZero = a1.isZero();
+        assertThat("2/3 is not zero", isZero, is(false));
+
+        Rational b1 = new Rational(0, 3);
+        boolean isZero1 = b1.isZero();
+        assertThat("0/3 is zero", isZero1, is(true));
+
+        Rational c1 = new Rational(2, 3);
+        boolean isOne = c1.isOne();
+        assertThat("2/3 is not one", isOne, is(false));
+
+        Rational d1 = new Rational(1, 1);
+        boolean isOne1 = d1.isOne();
+        assertThat("1/1 is one", isOne1, is(true));
+
+
+        Rational e1 = new Rational(2, 3);
+        boolean isMinusOne = e1.isMinusOne();
+        assertThat("2/3 is not minus one", isMinusOne, is(false));
+
+        Rational f1 = new Rational(-1, 1);
+        boolean isMinusOne1 = f1.isMinusOne();
+        assertThat("-1/1 is minus one", isMinusOne1, is(true));
+
+        Rational g1 = new Rational(2, 3);
+        String str = g1.toString();
+        assertThat("2/3 is not minus one", str, is("2/3"));
+
+
+
 
 
         //Add more rigirous testings here

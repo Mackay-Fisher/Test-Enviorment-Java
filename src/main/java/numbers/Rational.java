@@ -82,7 +82,15 @@ public class Rational
     }
 
     public Rational dividedBy(Rational r){
-        return this.times(r.reciprocal());
+        if(r.numerator == 0){
+            throw new IllegalArgumentException("Cannot divide by 0");
+        }
+        else{
+            int num = this.numerator * r.denominator;
+            int den = this.denominator * r.numerator;
+            System.out.println(num + " " + den);
+            return new Rational(num, den);
+        }
     }
 
     public Rational plus(Rational r){
@@ -94,10 +102,17 @@ public class Rational
     }
 
     public Rational raisedToThePowerOf(int n){
-
-        for(int i = 0; i < n; i++){
-            this.numerator = this.numerator * this.numerator;
-            this.denominator = this.denominator * this.denominator;
+        if(n == 0){
+            return new Rational(1,1);
+        }
+        if(n < 0){
+            return new Rational(this.denominator, this.numerator).raisedToThePowerOf(-n);
+        }
+        int a = this.numerator;
+        int b = this.denominator;
+        for(int i = 0; i < n-1; i++){
+            this.numerator = this.numerator * a;
+            this.denominator = this.denominator * b;
         }
         return new Rational(this.numerator, this.denominator);
     }
@@ -120,12 +135,12 @@ public class Rational
     }
 
     public boolean greaterThan(Number n){
-        Number a = this.numerator / this.denominator;
+        Number a =((double)this.numerator) / ((double)this.denominator);
         return a.doubleValue() > n.doubleValue();
     }
 
     public boolean lessThan(Number n){
-        Number a = this.numerator / this.denominator;
+        Number a = ((double)this.numerator) / ((double)this.denominator);
         return a.doubleValue() < n.doubleValue();
     }
 
